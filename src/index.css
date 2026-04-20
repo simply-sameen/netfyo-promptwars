@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@import "@fontsource/geist-sans";
+@import "@fontsource/jetbrains-mono";
+
+@theme {
+  --font-geist: "Geist Sans", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+
+  /* Spacing config based on standard structural rhythms to match the layout references */
+  --spacing-2: 0.5rem; /* For gap-2 */
+  --spacing-6: 1.5rem; /* For space-y-6 */
+  --spacing-8: 2rem;   /* For p-8 */
+
+  /* Global variables for dynamic accents as requested */
+  --color-bg-primary: #000000;
+  --color-text-primary: #FFFFFF;
+  --color-border-primary: #262626;
+  --color-accent-dynamic: var(--accent-color, #3b82f6);
+}
+
+@layer base {
+  :root {
+    --accent-color: #ffffff; /* We can change this globally for dynamic accents */
+  }
+
+  * {
+    border-color: var(--color-border-primary);
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    /* Set functional text font family as default body font */
+    font-family: var(--font-jetbrains);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Force headers to use the Geist Sans display font */
+  h1, h2, h3, h4, h5, h6, .headline {
+    font-family: var(--font-geist);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Base utility applications */
+@layer utilities {
+  .text-functional {
+    font-family: var(--font-jetbrains);
+  }
+  .text-headline {
+    font-family: var(--font-geist);
+  }
+}
